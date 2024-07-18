@@ -13,20 +13,17 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((response) => response.json())
     .then((data) => {
       populatePatientsList(data);
-      const jessicaTaylor = data.find(
-        (patient) => patient.name === "Jessica Taylor"
-      );
-      if (jessicaTaylor) {
-        populateDiagnosisHistory(jessicaTaylor);
-        populateDiagnosticList(jessicaTaylor);
-        populatePatientInformation(jessicaTaylor);
-        populateLabResults(jessicaTaylor);
+      const jessica = data.find((patient) => patient.name === "Jessica Taylor");
+      if (jessica) {
+        populateDiagnosisHistory(jessica);
+        populateDiagnosticList(jessica);
+        populatePatientInformation(jessica);
+        populateLabResults(jessica);
       }
     })
     .catch((error) => console.error("Error fetching data:", error));
 });
 
-// Function to populate patients list
 function populatePatientsList(data) {
   const container = document.querySelector("#patients-list .section-content");
 
@@ -52,24 +49,21 @@ function populatePatientsList(data) {
   });
 }
 
-// Function to populate diagnosis history for Jessica Taylor
 function populateDiagnosisHistory(patient) {
   const container = document.querySelector(
     "#diagnosis-history .section-content"
   );
+  const chartContainer = document.querySelector(
+    "#diagnosis-history .chart-card"
+  );
 
-  // Filter data for October 2023 to March 2024
   const filteredData = patient.diagnosis_history.filter((diagnosis) => {
-    // Assuming diagnosis has month and year properties
-    // Adjust logic to fit your data structure
-    // Example: Filter for months October 2023 to March 2024
     return (
       (diagnosis.year === 2023 && diagnosis.month >= "October") ||
       (diagnosis.year === 2024 && diagnosis.month <= "March")
     );
   });
 
-  // Prepare data for the blood pressure line chart
   const chartData = {
     labels: filteredData.map(
       (diagnosis) => `${diagnosis.month} ${diagnosis.year}`
@@ -80,8 +74,8 @@ function populateDiagnosisHistory(patient) {
         data: filteredData.map(
           (diagnosis) => diagnosis.blood_pressure.systolic.value
         ),
-        borderColor: "rgba(75, 192, 192, 1)",
-        backgroundColor: "rgba(75, 192, 192, 0.2)",
+        borderColor: "rgba(230, 111, 210, 1)",
+        backgroundColor: "rgba(230, 111, 210, 1)",
         fill: false,
       },
       {
@@ -89,23 +83,59 @@ function populateDiagnosisHistory(patient) {
         data: filteredData.map(
           (diagnosis) => diagnosis.blood_pressure.diastolic.value
         ),
-        borderColor: "rgba(255, 99, 132, 1)",
-        backgroundColor: "rgba(255, 99, 132, 0.2)",
+        borderColor: "rgba(140, 111, 230, 1)",
+        backgroundColor: "rgba(140, 111, 230, 1)",
         fill: false,
       },
     ],
   };
 
-  // Render the chart
-  const ctx = document.getElementById("acquisitions").getContext("2d");
+  const ctx = document.getElementById("acquisitions");
   new Chart(ctx, {
     type: "line",
     data: chartData,
+    options: {
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
+      responsive: false,
+    },
   });
 
   const recentDiagnosis = patient.diagnosis_history.filter(
     (diagnosis) => diagnosis.month === "March" && diagnosis.year === 2024
   );
+
+  const chartLengend = document.createElement("div");
+  chartLengend.classList.add("chart-legend");
+
+  chartLengend.innerHTML = recentDiagnosis.map(
+    (diagnosis) => `
+    <span class="legend-item">
+      <span class="legend-dot systolic-dot"></span>
+      <strong>Systolic</strong>
+    </span>
+    <h3>${diagnosis.blood_pressure.systolic.value}</h3>
+    <p>
+      <img src="/assets/ArrowUp.svg" alt="arrow up icon" class="smallest-icon">
+      ${diagnosis.blood_pressure.systolic.levels}
+    </p>
+    <br />
+    <span class="legend-item">
+      <span class="legend-dot diastolic-dot"></span>
+      <strong>Diastolic</strong>
+    </span>
+    <h3>${diagnosis.blood_pressure.diastolic.value}</h3>
+    <p>
+      <img src="/assets/ArrowDown.svg" alt="arrow down icon" class="smallest-icon">
+      ${diagnosis.blood_pressure.diastolic.levels}
+    </p>
+  `
+  );
+
+  chartContainer.appendChild(chartLengend);
 
   container.innerHTML = recentDiagnosis
     .map(
@@ -115,21 +145,21 @@ function populateDiagnosisHistory(patient) {
             <img src="/assets/respiratory rate.svg" alt="diagnosis icon" class="diagnosis-icon">
             <p>Respiratory Rate</p>
             <h2>${diagnosis.respiratory_rate.value} bpm</h2>
-            <br/>
+            <br />
             <p>${diagnosis.respiratory_rate.levels}</p>
           </div>
           <div class="diagnosis-card" style="background-color: #ffe6e9">
             <img src="/assets/temperature.svg" alt="diagnosis icon" class="diagnosis-icon">
             <p>Temperature</p>
             <h2>${diagnosis.temperature.value}°F</h2>
-            <br/>
+            <br />
             <p>${diagnosis.temperature.levels}</p>
             </div>
             <div class="diagnosis-card" style="background-color: #ffe6f1">
             <img src="/assets/HeartBPM.svg" alt="diagnosis icon" class="diagnosis-icon">
             <p>Heart Rate</p>
             <h2>${diagnosis.heart_rate.value} bpm</h2>
-            <br/>
+            <br />
             <p>
               <img src="/assets/ArrowDown.svg" alt="arrow down icon" class="smallest-icon">
               ${diagnosis.heart_rate.levels}

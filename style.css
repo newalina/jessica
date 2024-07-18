@@ -15,6 +15,17 @@ h2 {
   font-size: 24px;
 }
 
+h3 {
+  margin: 0;
+  padding: 4px 0;
+  font-size: 22px;
+}
+
+h4 {
+  margin: 0;
+  font-size: 18px;
+}
+
 strong,
 p {
   margin: 0;
@@ -41,7 +52,6 @@ canvas {
   padding: 16px;
   border-radius: 12px;
   background-color: #f4f0fe;
-  z-index: 100;
 }
 
 button {
@@ -77,7 +87,7 @@ br {
 #main-content {
   display: flex;
   justify-content: space-between;
-  gap: 32px;
+  gap: 30px;
 }
 
 #dashboard-left {
@@ -204,16 +214,6 @@ br {
   border-radius: 50%;
 }
 
-.diagnostic-list-header {
-  display: flex;
-  justify-content: space-around;
-  margin: 20px 0;
-  padding: 14px 16px;
-  height: 16px;
-  border-radius: 24px;
-  background-color: #f6f7f8;
-}
-
 .detail-card {
   display: flex;
   align-items: center;
@@ -228,6 +228,48 @@ br {
   justify-content: space-between;
   align-items: center;
   padding: 0 16px;
+}
+
+.chart-container {
+  margin-top: 20px;
+  padding: 20px 20px 0;
+  border-radius: 12px;
+  background-color: #f4f0fe;
+}
+
+.chart-card {
+  display: flex;
+  flex-direction: row;
+}
+
+.chart-legend {
+  margin: 42px 0 0 -8px;
+  border-radius: 12px;
+  background-color: #f4f0fe;
+  width: 160px;
+  height: 180px;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.systolic-dot {
+  background-color: #e66fd2;
+}
+
+.diastolic-dot {
+  background-color: #8c6fe6;
 }
 
 .recent-diagnosis {
@@ -314,5 +356,5 @@ br {
 }
 
 .smallest-icon {
-  margin: 0 2px 3px 0;
+  margin: 0 3px 2px 0;
 }
