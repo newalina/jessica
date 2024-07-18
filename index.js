@@ -57,21 +57,66 @@ function populateDiagnosisHistory(patient) {
     "#diagnosis-history .chart-card"
   );
 
-  const filteredData = patient.diagnosis_history.filter((diagnosis) => {
-    return (
-      (diagnosis.year === 2023 && diagnosis.month >= "October") ||
-      (diagnosis.year === 2024 && diagnosis.month <= "March")
-    );
-  });
+  const monthOrder = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const monthAbbreviations = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  const filteredAndSortedData = patient.diagnosis_history
+    .filter((diagnosis) => {
+      return (
+        (diagnosis.year === 2023 &&
+          monthOrder.indexOf(diagnosis.month) >=
+            monthOrder.indexOf("October")) ||
+        (diagnosis.year === 2024 &&
+          monthOrder.indexOf(diagnosis.month) <= monthOrder.indexOf("March"))
+      );
+    })
+    .sort((a, b) => {
+      if (a.year === b.year) {
+        return monthOrder.indexOf(a.month) - monthOrder.indexOf(b.month);
+      }
+      return a.year - b.year;
+    });
+
+  console.log(filteredAndSortedData);
 
   const chartData = {
-    labels: filteredData.map(
-      (diagnosis) => `${diagnosis.month} ${diagnosis.year}`
+    labels: filteredAndSortedData.map(
+      (diagnosis) =>
+        `${monthAbbreviations[monthOrder.indexOf(diagnosis.month)]} ${
+          diagnosis.year
+        }`
     ),
     datasets: [
       {
         label: "Systolic Blood Pressure",
-        data: filteredData.map(
+        data: filteredAndSortedData.map(
           (diagnosis) => diagnosis.blood_pressure.systolic.value
         ),
         borderColor: "rgba(230, 111, 210, 1)",
@@ -80,7 +125,7 @@ function populateDiagnosisHistory(patient) {
       },
       {
         label: "Diastolic Blood Pressure",
-        data: filteredData.map(
+        data: filteredAndSortedData.map(
           (diagnosis) => diagnosis.blood_pressure.diastolic.value
         ),
         borderColor: "rgba(140, 111, 230, 1)",
@@ -89,7 +134,6 @@ function populateDiagnosisHistory(patient) {
       },
     ],
   };
-
   const ctx = document.getElementById("acquisitions");
   new Chart(ctx, {
     type: "line",

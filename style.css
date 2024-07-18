@@ -2,6 +2,8 @@
 
 html,
 body {
+  /* display: flex; */
+  /* flex-direction: column; */
   margin: 0;
   padding: 0;
   height: 100vh;
@@ -33,13 +35,15 @@ p {
 
 table {
   margin-top: 20px;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
 }
 
 th,
 td {
   padding: 12px;
   text-align: left;
-  border-radius: 20px;
 }
 
 thead {
@@ -47,8 +51,22 @@ thead {
   background-color: #f6f7f8;
 }
 
+thead th:first-child {
+  border-top-left-radius: 24px;
+  border-bottom-left-radius: 24px;
+}
+
+thead th:last-child {
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px;
+}
+
+thead th:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+
 canvas {
-  margin-top: 20px;
+  margin: 20px 0 0 -20px;
   padding: 16px;
   border-radius: 12px;
   background-color: #f4f0fe;
@@ -72,6 +90,8 @@ br {
 #dashboard-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
   padding: 18px;
 }
 
@@ -243,10 +263,10 @@ br {
 }
 
 .chart-legend {
-  margin: 42px 0 0 -8px;
+  margin: 42px 0 0 0;
   border-radius: 12px;
   background-color: #f4f0fe;
-  width: 160px;
+  max-width: 160px;
   height: 180px;
 }
 
@@ -275,14 +295,15 @@ br {
 .recent-diagnosis {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   gap: 18px;
 }
 
 .diagnosis-card {
+  flex: 1;
   padding: 16px;
   border-radius: 12px;
   background-color: #f6f7f8;
-  width: 180px;
   height: 180px;
 }
 
@@ -357,4 +378,19 @@ br {
 
 .smallest-icon {
   margin: 0 3px 2px 0;
+}
+
+#easter-egg {
+  position: fixed;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+}
+
+@media (max-height: 1170px) {
+  #easter-egg {
+    display: none;
+    visibility: hidden;
+  }
 }
