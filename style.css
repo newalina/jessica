@@ -1,0 +1,318 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: Manrope;
+  font-size: 14px;
+  background-color: #f6f7f8;
+}
+
+h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+strong,
+p {
+  margin: 0;
+}
+
+table {
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-radius: 20px;
+}
+
+thead {
+  padding: 18px;
+  background-color: #f6f7f8;
+}
+
+canvas {
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 12px;
+  background-color: #f4f0fe;
+  z-index: 100;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 40px;
+  border: none;
+  border-radius: 41px;
+  background-color: #01f0d0;
+}
+
+br {
+  content: "";
+  margin: 4em;
+  display: block;
+  font-size: 24%;
+}
+
+#dashboard-container {
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+}
+
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  padding: 12px 32px;
+  border-radius: 70px;
+  background-color: #ffffff;
+}
+
+#main-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+#dashboard-left {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 260px;
+  gap: 32px;
+  overflow: hidden;
+}
+
+#dashboard-center {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 32px;
+}
+
+#dashboard-right {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 300px;
+  gap: 32px;
+}
+
+#patients-list {
+  max-height: 1010px;
+  border-radius: 16px;
+  background-color: #ffffff;
+  overflow: auto;
+}
+
+#patients-list::-webkit-scrollbar {
+  display: none;
+}
+
+#diagnosis-history {
+  padding: 20px;
+  border-radius: 16px;
+  background-color: #ffffff;
+}
+
+#diagnostic-list {
+  flex: 1;
+  padding: 20px;
+  max-height: 278px;
+  border-radius: 16px;
+  background-color: #ffffff;
+}
+
+#patient-information {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 16px;
+  background-color: #ffffff;
+}
+
+#lab-results {
+  flex: 1;
+  padding: 20px;
+  max-height: 225px;
+  border-radius: 16px;
+  background-color: #ffffff;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px 0;
+}
+
+.section-content {
+  margin-top: 20px;
+  overflow: auto;
+}
+
+.patient-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px 12px 14px;
+  height: 48px;
+}
+
+.patient-card.active {
+  background-color: #d8fcf7;
+}
+
+.patient-thumbnail {
+  margin-right: 12px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.patient-summary {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.patient-summary p {
+  color: #707070;
+}
+
+.patient-picture {
+  margin: 0 40px 24px;
+  width: 180px;
+  height: 180px;
+}
+
+.patient-details {
+  margin-top: 20px;
+}
+
+.icon-thumbnail {
+  margin-right: 12px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+}
+
+.diagnostic-list-header {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+  padding: 14px 16px;
+  height: 16px;
+  border-radius: 24px;
+  background-color: #f6f7f8;
+}
+
+.detail-card {
+  display: flex;
+  align-items: center;
+  margin: 24px 0;
+  border-radius: 8px;
+  height: 42px;
+}
+
+.lab-result-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.recent-diagnosis {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+}
+
+.diagnosis-card {
+  padding: 16px;
+  border-radius: 12px;
+  background-color: #f6f7f8;
+  width: 180px;
+  height: 180px;
+}
+
+.diagnosis-icon {
+  margin-bottom: 12px;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+}
+
+.home-icon {
+  height: 42px;
+}
+
+.navbar-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 640px;
+}
+
+.nav-option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  border-radius: 41px;
+}
+
+.nav-option.active {
+  background-color: #01f0d0;
+}
+
+.nav-icon {
+  margin-right: 5px;
+}
+
+.doctor-card {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.doctor-icon {
+  margin-right: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.doctor-summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 12px;
+  border-right: 1px solid #ededed;
+}
+
+.doctor-summary p {
+  color: #707070;
+}
+
+.small-icon {
+  padding: 12px;
+}
+
+.smaller-icon {
+  margin-left: auto;
+  padding: 0;
+  width: 12px;
+}
+
+.smallest-icon {
+  margin: 0 2px 3px 0;
+}

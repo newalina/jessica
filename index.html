@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <meta name="author" content="newalina" />
+    <title>Healthcare Dashboard</title>
+    <link rel="icon" href="/assets/icon.png" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div id="dashboard-container">
+      <div id="navbar">
+        <img src="/assets/TestLogo@2x.png" alt="home icon" class="home-icon" />
+        <div class="navbar-center">
+          <div class="nav-option">
+            <img
+              src="/assets/home_FILL0_wght300_GRAD0_opsz24.svg"
+              alt="overview icon"
+              class="nav-icon"
+            />
+            <strong>Overview</strong>
+          </div>
+          <div class="nav-option active">
+            <img
+              src="/assets/group_FILL0_wght300_GRAD0_opsz24.svg"
+              alt="patients icon"
+              class="nav-icon"
+            />
+            <strong>Patients </strong>
+          </div>
+          <div class="nav-option">
+            <img
+              src="/assets/calendar_today_FILL0_wght300_GRAD0_opsz24.svg"
+              alt="schedule icon"
+              class="nav-icon"
+            />
+            <strong>Schedule</strong>
+          </div>
+          <div class="nav-option">
+            <img
+              src="/assets/chat_bubble_FILL0_wght300_GRAD0_opsz24.svg"
+              alt="message icon"
+              class="nav-icon"
+            />
+            <strong>Message</strong>
+          </div>
+          <div class="nav-option">
+            <img
+              src="/assets/credit_card_FILL0_wght300_GRAD0_opsz24.svg"
+              alt="transactions icon"
+              class="nav-icon"
+            />
+            <strong>Transactions</strong>
+          </div>
+        </div>
+        <div class="doctor-card">
+          <img
+            src="/assets/senior-woman-doctor-and-portrait-smile-for-health-2023-11-27-05-18-16-utc@2x.png"
+            alt="doctor icon"
+            class="doctor-icon"
+          />
+          <div class="doctor-summary">
+            <strong>Dr. Jose Simmons</strong>
+            <p>General Practitioner</p>
+          </div>
+          <img
+            src="/assets/settings_FILL0_wght300_GRAD0_opsz24.svg"
+            alt="settings icon"
+            class="small-icon"
+          />
+          <img
+            src="/assets/more_vert_FILL0_wght300_GRAD0_opsz24.svg"
+            alt="vertical dots icon"
+          />
+        </div>
+      </div>
+      <div id="main-content">
+        <div id="dashboard-left">
+          <div id="patients-list">
+            <div class="section-header">
+              <h2>Patients</h2>
+              <img
+                src="/assets/search_FILL0_wght300_GRAD0_opsz24.svg"
+                alt="search icon"
+              />
+            </div>
+            <div class="section-content"></div>
+          </div>
+        </div>
+        <div id="dashboard-center">
+          <div id="diagnosis-history">
+            <h2>Diagnosis History</h2>
+            <div style="width: 100%">
+              <canvas id="acquisitions"></canvas>
+            </div>
+            <div class="section-content"></div>
+          </div>
+          <div id="diagnostic-list">
+            <h2>Diagnostic List</h2>
+            <table>
+              <colgroup>
+                <col style="width: 150px" />
+                <col style="width: 400px" />
+                <col style="width: 180px" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Diagnosis</th>
+                  <th>Description</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody class="section-content"></tbody>
+            </table>
+          </div>
+        </div>
+        <div id="dashboard-right">
+          <div id="patient-information">
+            <div class="section-content"></div>
+            <button><strong>Show All Information</strong></button>
+          </div>
+          <div id="lab-results">
+            <h2>Lab Results</h2>
+            <div class="section-content"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+  </body>
+</html>
