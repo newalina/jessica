@@ -171,11 +171,9 @@ function populateDiagnosisHistory(patient) {
     .join("");
 }
 
-// Function to populate diagnostic list for Jessica Taylor
 function populateDiagnosticList(patient) {
   const container = document.querySelector("#diagnostic-list .section-content");
 
-  // Populate diagnostic items
   patient.diagnostic_list.forEach((diagnostic) => {
     const diagnosticItem = document.createElement("tr");
     diagnosticItem.classList.add("diagnostic-item");
@@ -190,7 +188,6 @@ function populateDiagnosticList(patient) {
   });
 }
 
-// Function to populate patient information for Jessica Taylor
 function populatePatientInformation(patient) {
   const container = document.querySelector(
     "#patient-information .section-content"
@@ -244,7 +241,6 @@ function populatePatientInformation(patient) {
   container.appendChild(patientInfo);
 }
 
-// Function to populate lab results for Jessica Taylor
 function populateLabResults(patient) {
   const container = document.querySelector("#lab-results .section-content");
 
