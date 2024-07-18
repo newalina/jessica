@@ -382,13 +382,13 @@ br {
 
 #easter-egg {
   position: fixed;
+  height: 32px;
   bottom: 18px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 14px;
 }
 
-@media (max-height: 1170px) {
+@media (max-height: 1184px) {
   #easter-egg {
     display: none;
     visibility: hidden;
